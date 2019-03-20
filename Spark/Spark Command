@@ -1,0 +1,4 @@
+bin/spark-submit --class full.package.name.ClassName analytics-package.jar someargument someArgument
+
+
+spark-submit --class com.lumiq.dataframework.common.Main big-dataframework-jobs.jar KYCJob
