@@ -1,1 +1,55 @@
 ELK PROBLEMS
+
+
+Using Range Query With Match Commands:
+
+{
+    "query": {
+        "bool": {
+          "must": [
+            {
+              "range": {
+                "created_at": {
+                  "gte": "now-4h",
+                  "lt": "now"
+                }
+              }
+            },
+            {
+              "match": {
+                "status.keyword":"Stopped"
+              }
+            }
+          ]
+        }
+},
+"_source":{
+  "includes":["port_name","created_at","port_id","type"]  
+}
+}
+
+
+
+For Template In Elastic Search:
+
+PUT _template/templatename
+{
+  "template": "templatename-*",
+  "mappings": {
+    "json": {
+      "properties": {
+        "created_at": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+        }
+      }
+    }
+  },
+  "settings": {
+    "number_of_shards": 2,
+    "number_of_replicas": 1
+  },
+  "aliases": {
+    "templatename": {}
+  }
+}
