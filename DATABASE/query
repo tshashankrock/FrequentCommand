@@ -1,0 +1,11 @@
+For querying on json in sql developer:
+
+select count(distinct(key1)) from Databasename.tablename where json_value(OBJECT_DATA,'$."COMMERCIAL-REPORT-FILE"."COMMERCIAL-ACE-REPORTS"."COMMERCIAL-REPORT"."TRADELINES"."TRADELINE"[0]."SANCTION-DATE"') is not null;
+
+
+For Counting all record in schema:
+
+select table_name, 
+       to_number(extractvalue(xmltype(dbms_xmlgen.getxml('select count(1) c from '||owner||'.'||table_name)),'/ROWSET/ROW/C')) as count,TO_CHAR(SYSTIMESTAMP,'YYYY-MM-DD HH:MM:SS') AS edw_fetched_on
+from all_tables
+where owner = 'OWNER_NAME'
