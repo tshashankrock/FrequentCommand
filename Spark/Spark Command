@@ -1,7 +1,7 @@
 bin/spark-submit --class full.package.name.ClassName analytics-package.jar someargument someArgument
 
 
-spark-submit --class com.lumiq.dataframework.common.Main big-dataframework-jobs.jar KYCJob
+spark-submit --class com.lumiq.dataframework.common.Main big-dataframework-jobs.jar JobName
 
 for postgres insertion
-spark-submit --packages org.postgresql:postgresql:42.1.1 --class com.lumiq.dataframework.Main big-dataframework-jobs_2.11-0.2.jar BUREUJob
+spark-submit --packages org.postgresql:postgresql:42.1.1 --class com.lumiq.dataframework.Main big-dataframework-jobs_2.11-0.2.jar JobName
